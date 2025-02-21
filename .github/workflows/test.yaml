@@ -52,7 +52,7 @@ jobs:
         id: process
         run: |
           content="🤖 AI Reviewer result 🤖\n\n"
-          echo "${{ steps.ai-reviewer.outputs.review }}" | jq -r 'to_entries[] | "### File: `\(.key)`\n```\n\(.value)\n```\n"' > comment.txt
+          echo "${{ toJSON(steps.ai-reviewer.outputs.review) }}" | jq -r 'to_entries[] | "### File: `\(.key)`\n```\n\(.value)\n```\n"' > comment.txt
 
       - name: Add comment
         uses: peter-evans/create-or-update-comment@v4
