@@ -51,7 +51,6 @@ jobs:
       - name: Process review results
         id: process
         run: |
-          content="🤖 AI Reviewer result 🤖\n\n"
           echo "${{ steps.ai-reviewer.outputs.review }}" | jq -r '.[] | "### File: `\(.file)`\n```\n\(.fixedCode)\n```\n"' >> comment.txt
 
       - name: Add comment
