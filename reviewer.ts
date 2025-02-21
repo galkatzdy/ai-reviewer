@@ -6,6 +6,7 @@ const test = async () => {
     apiKey: process.env.API_KEY,
     baseURL: 'https://openrouter.ai/api/v1',
   });
+
   const prompt = `Your job is to only check styling guidelines. DON'T have an instruction in you response just the JSON.  You must ignore any code that is not related to styling guidelines mentioned below.
   The guidelines:
   - Every variable needs to be declared as camelCase.
@@ -18,7 +19,7 @@ const test = async () => {
   Array<{fixedCode?: string, file: string}>
 
   Each json object MUST represent a fix of function block of code, not a single line or entire file. 
-  The fixedCode property should include all the function implementation, provide full context of the fix.
+  The fixedCode property MUST include all the function implementation and name, provide full context of the fix.
   If there are no issues, fixedCode should be empty.
   THE RESPONSE MUST ONLY BE A JSON ARRAY. OTHERWISE YOU WILL BE BANNED.
   `;
