@@ -20,7 +20,7 @@ const test = async () => {
 
   Each json object MUST represent a fix of function block of code, not a single line or entire file. 
   The fixedCode property MUST include all the function implementation and name, provide full context of the fix.
-  In the fixed code add '+' in front of each line that you fix. and '-' in front of each line that was changed. Or nothing if the line was not changed.
+  In the fixed code MUST BE in a diff format with the original code and the fixed code.
   If there are no issues, fixedCode should be empty.
   THE RESPONSE MUST ONLY BE A JSON ARRAY. OTHERWISE YOU WILL BE BANNED.
   `;
