@@ -3,7 +3,7 @@ import core from '@actions/core';
 
 const test = async () => {
   const openai = new OpenAI({
-    apiKey: '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',
+    apiKey: process.env.API_KEY,
     baseURL: 'https://openrouter.ai/api/v1',
   });
 
