@@ -11,8 +11,8 @@ const test = async () => {
   The guidelines:
   - Environment variables should be in all caps.
   - A styled component that uses styled-components should not declare the colors manually instead use the theme.
-  - Enum name MUST be in PascalCase.
-  - Enum keys MUST be in PascalCase.
+  - Enum name MUST start with an uppercase letter and each word after that should start with a uppercase letter.
+  - Enum keys MUST start with an uppercase letter and each word after that should start with a uppercase letter.
   You have the following code: ${process.env.DIFF}. 
   Your response MUST ALWAYS ONLY output as structured json as follows:
 
@@ -26,7 +26,7 @@ const test = async () => {
   `;
 
   const Result = await openai.chat.completions.create({
-    model: 'anthropic/claude-3.5-haiku-20241022',
+    model: 'google/gemini-2.0-pro-exp-02-05:free',
     messages: [{ role: 'user', content: prompt }],
   });
 
