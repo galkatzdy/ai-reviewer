@@ -16,8 +16,10 @@ const test = async () => {
   You the following code: ${process.env.DIFF}. Your output json should be structured as follows:
   [{
     "file": <filename>,
-    "fixedCode": <fixed code> | 'NO_ISSUE',
+    "fixedCode": <fixed code>,
   }]
+
+  If there are no issues, skip the file.
   `;
 
   const result = await openai.chat.completions.create({
