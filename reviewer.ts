@@ -9,10 +9,9 @@ const test = async () => {
 
   const prompt = `Your job is to only check styling guidelines. You must ignore any code that is not related to styling guidelines mentioned below.
   The guidelines:
-  - Every variable needs to be declared as camelCase.
+  - Every const variable needs to be declared as lowerCamelCase. One-word variables are allowed.
   - Environment variables should be in all caps.
-  - One word variables MUST be in lowercase.
-  - Names of functions MUST be in lowerCamelCase.
+  - Names of functions MUST be in lowerCamelCase. One-word functions are allowed.
   - A styled component that uses styled-components should not declare the colors manually instead use the theme.
   You have the following code: ${process.env.DIFF}. 
   Your response MUST ALWAYS ONLY output as structured json as follows:
