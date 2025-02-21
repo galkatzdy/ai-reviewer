@@ -38,7 +38,8 @@ const test = async () => {
   const parsedJson = JSON.parse(jsonOutput || '[]');
 
   const filteredJson = parsedJson.filter(
-    (item: { file: string; reason: string }) => item.reason !== '' && item.reason !== null && item.reason !== undefined
+    (item: { file: string; violations: string; line: number }) =>
+      item.violations !== '' && item.violations !== null && item.violations !== undefined
   );
 
   const chunks = filteredJson.map(
