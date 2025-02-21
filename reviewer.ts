@@ -14,10 +14,9 @@ const test = async () => {
   - Names of functions should be in camelCase.
   You have the following code: ${process.env.DIFF}. 
   Your response MUST ALWAYS ONLY output as structured json as follows:
-  [{
-    "file": <filename>,
-    "fixedCode": <fixed code>,
-  }]
+
+  Array<{fixedCode?: string, file: string}>
+  
   Each json object MUST represent a fix of function block of code, not a single line or entire file.
 
   If there are no issues, fixedCode should be empty.
