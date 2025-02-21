@@ -42,6 +42,7 @@ jobs:
       - name: Get diff
         id: get-diff
         run: |
+          git fetch origin master
           echo "diff=$(git diff master..${{ env.BRANCH_NAME }} -- '*.ts')" >> $GITHUB_OUTPUT
 
       - name: Run AI Reviewer
