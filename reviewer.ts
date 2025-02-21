@@ -9,7 +9,6 @@ const test = async () => {
 
   const prompt = `Your job is to only check styling guidelines. You must ignore any code that is not related to styling guidelines mentioned below.
   The guidelines:
-  - Every const variable needs to be declared as camelCase. One-word variables are allowed to be in lowercase.
   - Environment variables should be in all caps.
   - A styled component that uses styled-components should not declare the colors manually instead use the theme.
   - Enum name MUST be in PascalCase.
