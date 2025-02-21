@@ -26,7 +26,7 @@ const test = async () => {
   `;
 
   const Result = await openai.chat.completions.create({
-    model: 'openai/gpt-4o-mini',
+    model: 'anthropic/claude-3.5-haiku-20241022',
     messages: [{ role: 'user', content: prompt }],
   });
 
