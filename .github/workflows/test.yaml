@@ -33,11 +33,20 @@ jobs:
       - name: install dependencies
         run: bun install
 
-      - name: Get diff
-        id: get-diff
+      - name: Get branch name
         run: |
-          git fetch origin
-          echo "diff=$(git diff master..HEAD -- '*.ts')" >> $GITHUB_OUTPUT
+          if ${{ github.event_name == 'pull_request' }}; then
+            echo "BRANCH_NAME=${{ github.head_ref }}" >> $GITHUB_ENV
+          else
+            echo "BRANCH_NAME=${{ github.ref_name }}" >> $GITHUB_ENV
+          fi
+
+      - name: Diff
+        id: diff
+        uses: yanamura/git-merge-diff@v1
+        with:
+          from: ${{ env.BRANCH_NAME }}
+          to: HEAD
 
       - name: Run AI Reviewer
         id: ai-reviewer
