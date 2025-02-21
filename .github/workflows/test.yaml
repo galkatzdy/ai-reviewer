@@ -31,11 +31,17 @@ jobs:
       - name: install dependencies
         run: bun install
 
+      - name: Get diff
+        id: get-diff
+        run: |
+          echo "diff=$(git diff master..${{ github.ref_name }} -- '*.ts')" >> $GITHUB_OUTPUT
+
       - name: Run AI Reviewer
         id: ai-reviewer
         run: bun reviewer.ts
         env:
           API_KEY: ${{ secrets.API_KEY }}
+          DIFF: ${{ steps.get-diff.outputs.diff }}
 
       - name: Add comment
         uses: peter-evans/create-or-update-comment@v4
@@ -44,5 +50,4 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           body: |
             :robot: AI Reviewer result :robot:
-
             ${{ steps.ai-reviewer.outputs.review }}
