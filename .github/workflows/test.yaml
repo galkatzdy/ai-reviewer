@@ -34,7 +34,7 @@ jobs:
       - name: Get diff
         id: get-diff
         run: |
-          echo "diff=$(git diff master..${GITHUB_REF#refs/heads/} -- '*.ts')" >> $GITHUB_OUTPUT
+          echo "diff=$(git diff master..${GITHUB_HEAD_REF} -- '*.ts')" >> $GITHUB_OUTPUT
 
       - name: Run AI Reviewer
         id: ai-reviewer
