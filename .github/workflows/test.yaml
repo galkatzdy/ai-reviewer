@@ -50,6 +50,7 @@ jobs:
 
       - name: Add comment
         uses: peter-evans/create-or-update-comment@v4
+        if: ${{ steps.ai-reviewer.outputs.review != 'NO_ISSUES' }}
         with:
           issue-number: ${{ github.event.pull_request.number }}
           token: ${{ secrets.GITHUB_TOKEN }}
