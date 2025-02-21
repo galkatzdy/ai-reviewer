@@ -52,7 +52,7 @@ jobs:
         id: process
         run: |
           content="🤖 AI Reviewer result 🤖\n\n"
-          echo "${{ steps.ai-reviewer.outputs.review }}" | jq -r '.[] | "### File: `\(.file)`\n```\n\(.fixedCode)\n```\n"' > comment.txt
+          echo "${{ steps.ai-reviewer.outputs.review }}" | jq -r '.[] | "### File: `\(.file)`\n```\n\(.fixedCode)\n```\n"' >> comment.txt
 
       - name: Add comment
         uses: peter-evans/create-or-update-comment@v4
