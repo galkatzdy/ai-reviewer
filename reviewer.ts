@@ -13,15 +13,15 @@ const test = async () => {
   - Environment variables should be in all caps.
   - One word variables should be in lowercase.
   - Names of functions should be in camelCase.
-  You the following code: ${process.env.DIFF}. Your response MUST ALWAYS ONLY output as structured json as follows:
+  You have the following code: ${process.env.DIFF}. 
+  Your response MUST ALWAYS ONLY output as structured json as follows:
   [{
     "file": <filename>,
     "fixedCode": <fixed code>,
   }]
 
   If there are no issues, fixedCode should be empty.
-  DONT include anything in your response BUT the json.
-  If you don't follow those instructions, you will be fired.
+  THE RESPONSE MUST ONLY BE A JSON ARRAY. OTHERWISE YOU WILL BE BANNED.
   `;
 
   const result = await openai.chat.completions.create({
