@@ -10,24 +10,51 @@ on:
   pull_request:
     branches:
       - master
-    types: [ready_for_review]
+    # types: [ready_for_review]
 
 jobs:
-  ci:
+  ai-reviewer:
     runs-on: ubuntu-20.04
     timeout-minutes: 10
+    permissions:
+      pull-requests: write
+      issues: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Add comment on line
-        uses: actions/github-script@v6
         with:
-          script: |
-            github.rest.issues.createReviewComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              path: 'README.md',
-              body: 'AI Reviewer is running, please wait...'
-            })
+          fetch-depth: 0
+
+      - name: setup bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: install dependencies
+        run: bun install
+
+      - name: Get diff
+        id: get-diff
+        run: |
+          git fetch origin
+          echo "diff<<EOF" >> $GITHUB_OUTPUT
+          git diff origin/master..HEAD -- '*.ts' | tr -d '\r' >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Run AI Reviewer
+        id: ai-reviewer
+        run: bun reviewer.ts
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
+          DIFF: ${{ steps.get-diff.outputs.diff }}
+
+      - name: Add comment
+        uses: peter-evans/create-or-update-comment@v4
+        if: ${{ steps.ai-reviewer.outputs.review != 'NO_ISSUES' }}
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          body: |
+            :robot: AI Reviewer result :robot:
+
+            ${{ steps.ai-reviewer.outputs.review || 'No issues Found' }}

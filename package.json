@@ -1,0 +1,16 @@
+{
+  "name": "ai-reviewer",
+  "version": "1.0.0",
+  "description": "test1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "openai": "^4.85.3"
+  }
+}
