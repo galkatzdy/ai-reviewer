@@ -18,14 +18,14 @@ const test = async () => {
   Array<{fixedCode?: string, file: string}>
 
   Each json object MUST represent a fix of function block of code, not a single line or entire file. 
-  Add any context needed to give context to the fix (the function name, the line number, etc).
+  The fixedCode property should provide full context of the fix.
 
   If there are no issues, fixedCode should be empty.
   THE RESPONSE MUST ONLY BE A JSON ARRAY. OTHERWISE YOU WILL BE BANNED.
   `;
 
   const Result = await openai.chat.completions.create({
-    model: 'google/gemini-2.0-flash-001',
+    model: 'google/gemini-2.0-flash-lite-preview-02-05:free',
     messages: [{ role: 'user', content: prompt }],
   });
 
