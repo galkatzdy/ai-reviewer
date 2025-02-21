@@ -37,7 +37,7 @@ jobs:
         id: get-diff
         run: |
           git fetch origin
-          echo "diff=$(git diff master..HEAD -- '*.ts')" >> $GITHUB_OUTPUT
+          echo "diff=$(git diff origin/master..HEAD -- '*.ts')" >> $GITHUB_OUTPUT
 
       - name: Run AI Reviewer
         id: ai-reviewer
