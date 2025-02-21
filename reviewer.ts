@@ -20,6 +20,7 @@ const test = async () => {
   }]
 
   If there are no issues, fixedCode should be empty.
+  DONT include anything in your response BUT the json.
   If you don't follow those instructions, you will be fired.
   `;
 
