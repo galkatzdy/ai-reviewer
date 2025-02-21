@@ -1,0 +1,33 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+
+name: AI Reviewer
+
+concurrency:
+  group: ai-reviewer-${{ github.head_ref }}
+  cancel-in-progress: true
+on:
+  # trigger the workflow on pr is ready for review
+  pull_request:
+    branches:
+      - master
+    types: [ready_for_review]
+
+jobs:
+  ci:
+    runs-on: ubuntu-20.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Add comment on line
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.createReviewComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              path: 'README.md',
+              body: 'AI Reviewer is running, please wait...'
+            })
