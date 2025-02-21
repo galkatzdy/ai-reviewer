@@ -7,22 +7,22 @@ const test = async () => {
     baseURL: 'https://openrouter.ai/api/v1',
   });
 
-  const prompt = `Your job is to only check styling guidelines. DON'T have an instruction in you response just the JSON.  You must ignore any code that is not related to styling guidelines mentioned below.
+  const prompt = `Your job is to only check styling guidelines. You must ignore any code that is not related to styling guidelines mentioned below.
   The guidelines:
   - Every variable needs to be declared as camelCase.
   - Environment variables should be in all caps.
-  - One word variables should be in lowercase.
-  - Names of functions should be in camelCase unless the name is one word, then it should be in lowercase.
+  - One word variables MUST be in lowercase.
+  - Names of functions MUST be in camelCase unless the name is one word, then it should be in lowercase.
   - A styled component that uses styled-components should not declare the colors manually instead use the theme.
   You have the following code: ${process.env.DIFF}. 
   Your response MUST ALWAYS ONLY output as structured json as follows:
 
-  Array<{fixedCode?: string, file: string}>
+  Array<{violations: string, file: string, line: number}>
 
   Each json object MUST represent a fix of function block of code, not a single line or entire file. 
-  The fixedCode property MUST include all the function implementation and name, provide full context of the fix.
-  In the fixed code MUST BE in a diff format with the original code and the fixed code.
-  If there are no issues, fixedCode should be empty.
+  The violations MUST include the full reason for the violation.
+  The line MUST be the line number of the issue.
+  If there are no issues, reason should be empty.
   THE RESPONSE MUST ONLY BE A JSON ARRAY. OTHERWISE YOU WILL BE BANNED.
   `;
 
@@ -38,12 +38,12 @@ const test = async () => {
   const parsedJson = JSON.parse(jsonOutput || '[]');
 
   const filteredJson = parsedJson.filter(
-    (item: { file: string; fixedCode: string }) =>
-      item.fixedCode !== '' && item.fixedCode !== null && item.fixedCode !== undefined
+    (item: { file: string; reason: string }) => item.reason !== '' && item.reason !== null && item.reason !== undefined
   );
 
   const chunks = filteredJson.map(
-    (item: { file: string; fixedCode: string }) => `\`\`\`diff \n ${item.fixedCode} \n\`\`\``
+    (item: { file: string; violations: string; line: number }) =>
+      `File: ${item.file}\nLine: ${item.line}\nViolations: ${item.violations}\n\n`
   );
 
   const review = `${chunks.join('\n\n')}`;
