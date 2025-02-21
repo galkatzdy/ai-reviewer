@@ -57,4 +57,4 @@ jobs:
           body: |
             :robot: AI Reviewer result :robot:
 
-            ${{ steps.ai-reviewer.outputs.review }}
+            ${{ steps.ai-reviewer.outputs.review || 'No issues Found' }}

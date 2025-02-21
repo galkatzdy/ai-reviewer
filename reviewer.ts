@@ -32,7 +32,9 @@ const test = async () => {
 
   const parsedJson = JSON.parse(jsonOutput || '[]');
 
-  const chunks = parsedJson.map(
+  const filteredJson = parsedJson.filter((item: { file: string; fixedCode: string }) => item.fixedCode !== '');
+
+  const chunks = filteredJson.map(
     (item: { file: string; fixedCode: string }) => `
   File: ${item.file}
   Fixed Code: ${item.fixedCode}
@@ -41,7 +43,7 @@ const test = async () => {
 
   const review = `${chunks.join('\n\n')}`;
 
-  core.setOutput('review', review);
+  core.setOutput('review', chunks ? review : '');
 };
 
 await test();
