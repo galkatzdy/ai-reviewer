@@ -11,7 +11,6 @@ const test = async () => {
   The guidelines:
   - Every const variable needs to be declared as camelCase. One-word variables are allowed to be in lowercase.
   - Environment variables should be in all caps.
-  - Names of functions MUST be in camelCase. One-word functions are allowed to be in lowercase.
   - A styled component that uses styled-components should not declare the colors manually instead use the theme.
   - Enum name MUST be in PascalCase.
   - Enum keys MUST be in PascalCase.

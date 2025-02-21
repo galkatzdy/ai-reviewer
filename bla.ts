@@ -5,12 +5,12 @@ enum Colors {
 }
 
 enum Sizes {
-  SMALL = 'small',
-  MEDIUM = 'medium',
-  LARGE = 'large',
+  Small = 'small',
+  Medium = 'medium',
+  Large = 'large',
 }
 
-enum VARIANTS {
+enum Variants {
   Default = 'default',
   Primary = 'primary',
   Secondary = 'secondary',
