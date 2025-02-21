@@ -56,4 +56,5 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           body: |
             :robot: AI Reviewer result :robot:
+
             ${{ steps.ai-reviewer.outputs.review }}

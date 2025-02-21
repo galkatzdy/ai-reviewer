@@ -12,12 +12,12 @@ const test = async () => {
   - Every variable needs to be declared as lowerCamelCase.
   You the following code: ${process.env.DIFF}. If you don't find anything wrong, please return a string of 'NO_ISSUES'.`;
 
-  const Result = await openai.chat.completions.create({
+  const result = await openai.chat.completions.create({
     model: 'google/gemini-2.0-flash-lite-preview-02-05:free',
     messages: [{ role: 'user', content: prompt }],
   });
 
-  core.setOutput('review', Result.choices[0].message.content);
+  core.setOutput('review', result.choices[0].message.content);
 };
 
 await test();
