@@ -38,11 +38,7 @@ const test = async () => {
 
   const filteredJson = parsedJson.filter((item: { file: string; fixedCode: string }) => item.fixedCode !== '');
 
-  const chunks = filteredJson.map(
-    (item: { file: string; fixedCode: string }) => `
-  File: *${item.file}*
-  \`\`\`ts ${item.fixedCode} \`\`\``
-  );
+  const chunks = filteredJson.map((item: { file: string; fixedCode: string }) => `\`\`\` ${item.fixedCode} \`\`\``);
 
   const review = `${chunks.join('\n\n')}`;
 
