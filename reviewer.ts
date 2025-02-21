@@ -19,7 +19,8 @@ const test = async () => {
     "fixedCode": <fixed code>,
   }]
 
-  If there are no issues, skip the file and don't put it inside the array.
+  If there are no issues, fixedCode should be empty.
+  If you don't follow those instructions, you will be fired.
   `;
 
   const result = await openai.chat.completions.create({
