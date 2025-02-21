@@ -36,8 +36,8 @@ const test = async () => {
 
   const chunks = filteredJson.map(
     (item: { file: string; fixedCode: string }) => `
-  File: ${item.file}
-  Fixed Code: ${item.fixedCode}
+  File: *${item.file}*
+  Fixed Code: \`\`\`ts ${item.fixedCode}\`\`\`
   `
   );
 
