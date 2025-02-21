@@ -7,9 +7,9 @@ const test = async () => {
     baseURL: 'https://openrouter.ai/api/v1',
   });
   const prompt = `Your job is to only check styling guidelines.
-  At the beginning of the response please mention the file you are reviewing.
+  At the beginning of the response please mention the file you are reviewing. Also attach a code fix with the relevant context. 
   The guidelines:
-  - Every variable needs to be declared as lowerCamelCase.
+  - Every variable needs to be declared as camelCase.
   You the following code: ${process.env.DIFF}. If you don't find anything wrong, please return a string of 'NO_ISSUES'.`;
 
   const result = await openai.chat.completions.create({
