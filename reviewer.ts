@@ -28,8 +28,10 @@ const test = async () => {
     messages: [{ role: 'user', content: prompt }],
   });
 
+  console.log({ result: Result.choices[0].message.content });
   const jsonOutput = Result.choices[0].message.content?.replaceAll('```json', '').replaceAll('```', '');
 
+  console.log({ jsonOutput: jsonOutput });
   const parsedJson = JSON.parse(jsonOutput || '[]');
 
   const filteredJson = parsedJson.filter((item: { file: string; fixedCode: string }) => item.fixedCode !== '');
@@ -37,7 +39,7 @@ const test = async () => {
   const chunks = filteredJson.map(
     (item: { file: string; fixedCode: string }) => `
   File: *${item.file}*
-  Fixed Code: \`\`\`ts ${item.fixedCode}\`\`\`
+  \`\`\`${item.fixedCode}\`\`\`
   `
   );
 
