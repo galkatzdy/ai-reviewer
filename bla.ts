@@ -5,15 +5,15 @@ enum Colors {
 }
 
 enum Sizes {
-  Small = 'small',
-  Medium = 'medium',
-  Large = 'large',
+  SMALL = 'small',
+  MEDIUM = 'medium',
+  LARGE = 'large',
 }
 
-enum Variants {
-  Default = 'default',
-  Primary = 'primary',
-  Secondary = 'secondary',
+enum VARIANTS {
+  DEFAULT = 'default',
+  PRIMARY = 'primary',
+  SECONDARY = 'secondary',
 }
 
 const test = () => {
