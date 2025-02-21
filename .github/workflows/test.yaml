@@ -57,4 +57,7 @@ jobs:
           body: |
             :robot: AI Reviewer result :robot:
 
-            ${{ steps.ai-reviewer.outputs.review }}
+            echo ${{ toJSON(steps.ai-reviewer.outputs.review) }} | jq -c '.[]' | while read -r item; do
+              echo "File: \`\`\`${item.file}\`\`\`"
+              echo "Fixed code: \`\`\`${item.fixedCode}\`\`\`"
+            done

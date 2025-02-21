@@ -28,7 +28,9 @@ const test = async () => {
     messages: [{ role: 'user', content: prompt }],
   });
 
-  core.setOutput('review', result.choices[0].message.content);
+  const jsonOutput = result.choices[0].message.content?.replaceAll('```json', '').replaceAll('```', '');
+
+  core.setOutput('review', jsonOutput);
 };
 
 await test();
