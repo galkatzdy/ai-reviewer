@@ -12,7 +12,7 @@ const test = async () => {
   - Every variable needs to be declared as camelCase.
   - Environment variables should be in all caps.
   - One word variables MUST be in lowercase.
-  - Names of functions MUST be in camelCase unless the name is one word, then it should be in lowercase.
+  - Names of functions MUST be in lowerCamelCase.
   - A styled component that uses styled-components should not declare the colors manually instead use the theme.
   You have the following code: ${process.env.DIFF}. 
   Your response MUST ALWAYS ONLY output as structured json as follows:
