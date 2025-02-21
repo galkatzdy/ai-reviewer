@@ -20,6 +20,7 @@ const test = async () => {
 
   Each json object MUST represent a fix of function block of code, not a single line or entire file. 
   The fixedCode property MUST include all the function implementation and name, provide full context of the fix.
+  In the fixed code add '+' in front of each line that you fix. and '-' in front of each line that was changed.
   If there are no issues, fixedCode should be empty.
   THE RESPONSE MUST ONLY BE A JSON ARRAY. OTHERWISE YOU WILL BE BANNED.
   `;
@@ -40,7 +41,7 @@ const test = async () => {
   const chunks = filteredJson.map(
     (item: { file: string; fixedCode: string }) => `
   File: *${item.file}*
-  \`\`\`ts ${item.fixedCode}\`\`\``
+  \`\`\`ts ${item.fixedCode} \`\`\``
   );
 
   const review = `${chunks.join('\n\n')}`;
