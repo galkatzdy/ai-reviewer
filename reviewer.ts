@@ -40,8 +40,7 @@ const test = async () => {
   const chunks = filteredJson.map(
     (item: { file: string; fixedCode: string }) => `
   File: *${item.file}*
-  \`\`\`${item.fixedCode}
-  `
+  \`\`\`ts ${item.fixedCode}\`\`\``
   );
 
   const review = `${chunks.join('\n\n')}`;
