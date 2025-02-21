@@ -6,8 +6,7 @@ const test = async () => {
     apiKey: process.env.API_KEY,
     baseURL: 'https://openrouter.ai/api/v1',
   });
-  // At the beginning of the response please mention the file you are reviewing. Also attach a code fix with the relevant context.
-  const prompt = `Your job is to only check styling guidelines. You must ignore any code that is not related to styling guidelines mentioned below.
+  const prompt = `Your job is to only check styling guidelines. DON'T have an instruction in you response just the JSON.  You must ignore any code that is not related to styling guidelines mentioned below.
   The guidelines:
   - Every variable needs to be declared as camelCase.
   - Environment variables should be in all caps.
