@@ -39,7 +39,7 @@ const test = async () => {
   const filteredJson = parsedJson.filter((item: { file: string; fixedCode: string }) => item.fixedCode !== '');
 
   const chunks = filteredJson.map(
-    (item: { file: string; fixedCode: string }) => `\`\`\`diff \n ${item.fixedCode} \`\`\``
+    (item: { file: string; fixedCode: string }) => `\`\`\`diff \n ${item.fixedCode} \n\`\`\``
   );
 
   const review = `${chunks.join('\n\n')}`;
