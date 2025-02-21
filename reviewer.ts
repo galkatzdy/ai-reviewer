@@ -18,6 +18,7 @@ const test = async () => {
     "file": <filename>,
     "fixedCode": <fixed code>,
   }]
+  Each json object MUST represent a fix of function block of code, not a single line or entire file.
 
   If there are no issues, fixedCode should be empty.
   THE RESPONSE MUST ONLY BE A JSON ARRAY. OTHERWISE YOU WILL BE BANNED.
