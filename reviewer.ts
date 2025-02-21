@@ -13,6 +13,7 @@ const test = async () => {
   - Environment variables should be in all caps.
   - One word variables should be in lowercase.
   - Names of functions should be in camelCase.
+  - A styled component that uses styled-components should not declare the colors manually instead use the theme.
   You have the following code: ${process.env.DIFF}. 
   Your response MUST ALWAYS ONLY output as structured json as follows:
 
@@ -36,7 +37,10 @@ const test = async () => {
   console.log({ jsonOutput: jsonOutput });
   const parsedJson = JSON.parse(jsonOutput || '[]');
 
-  const filteredJson = parsedJson.filter((item: { file: string; fixedCode: string }) => item.fixedCode !== '');
+  const filteredJson = parsedJson.filter(
+    (item: { file: string; fixedCode: string }) =>
+      item.fixedCode !== '' && item.fixedCode !== null && item.fixedCode !== undefined
+  );
 
   const chunks = filteredJson.map(
     (item: { file: string; fixedCode: string }) => `\`\`\`diff \n ${item.fixedCode} \n\`\`\``
