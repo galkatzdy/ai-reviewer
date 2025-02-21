@@ -23,12 +23,12 @@ const test = async () => {
   THE RESPONSE MUST ONLY BE A JSON ARRAY. OTHERWISE YOU WILL BE BANNED.
   `;
 
-  const result = await openai.chat.completions.create({
+  const Result = await openai.chat.completions.create({
     model: 'google/gemini-2.0-pro-exp-02-05:free',
     messages: [{ role: 'user', content: prompt }],
   });
 
-  const jsonOutput = result.choices[0].message.content?.replaceAll('```json', '').replaceAll('```', '');
+  const jsonOutput = Result.choices[0].message.content?.replaceAll('```json', '').replaceAll('```', '');
 
   const parsedJson = JSON.parse(jsonOutput || '[]');
 
