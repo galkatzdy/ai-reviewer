@@ -7,13 +7,13 @@ const test = async () => {
     baseURL: 'https://openrouter.ai/api/v1',
   });
   // At the beginning of the response please mention the file you are reviewing. Also attach a code fix with the relevant context.
-  const prompt = `Your job is to only check styling guidelines.
+  const prompt = `Your job is to only check styling guidelines. You must ignore any code that is not related to styling guidelines mentioned below.
   The guidelines:
   - Every variable needs to be declared as camelCase.
   - Environment variables should be in all caps.
   - One word variables should be in lowercase.
   - Names of functions should be in camelCase.
-  You the following code: ${process.env.DIFF}. You MUST ALWAYS output the response as structured json as follows:
+  You the following code: ${process.env.DIFF}. Your response MUST ALWAYS ONLY output as structured json as follows:
   [{
     "file": <filename>,
     "fixedCode": <fixed code>,
