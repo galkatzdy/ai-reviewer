@@ -20,15 +20,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Add comment on line
-        uses: actions/github-script@v6
+      - name: Add comment
+        uses: peter-evans/create-or-update-comment@v4
         with:
-          script: |
-            github.rest.issues.createReviewComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              path: 'README.md',
-              position: 1,
-              body: 'AI Reviewer is running, please wait...'
-            })
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            :robot: AI Reviewer is currently running. Please wait a few seconds.
