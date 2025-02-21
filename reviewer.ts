@@ -16,8 +16,9 @@ const test = async () => {
   Your response MUST ALWAYS ONLY output as structured json as follows:
 
   Array<{fixedCode?: string, file: string}>
-  
-  Each json object MUST represent a fix of function block of code, not a single line or entire file.
+
+  Each json object MUST represent a fix of function block of code, not a single line or entire file. 
+  Add any context needed to give context to the fix (the function name, the line number, etc).
 
   If there are no issues, fixedCode should be empty.
   THE RESPONSE MUST ONLY BE A JSON ARRAY. OTHERWISE YOU WILL BE BANNED.
