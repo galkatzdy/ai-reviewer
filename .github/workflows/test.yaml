@@ -24,5 +24,6 @@ jobs:
         uses: peter-evans/create-or-update-comment@v4
         with:
           issue-number: ${{ github.event.pull_request.number }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           body: |
             :robot: AI Reviewer is currently running. Please wait a few seconds.
