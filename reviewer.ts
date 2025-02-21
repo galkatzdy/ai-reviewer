@@ -30,7 +30,18 @@ const test = async () => {
 
   const jsonOutput = result.choices[0].message.content?.replaceAll('```json', '').replaceAll('```', '');
 
-  core.setOutput('review', jsonOutput);
+  const parsedJson = JSON.parse(jsonOutput || '[]');
+
+  const chunks = parsedJson.map(
+    (item: { file: string; fixedCode: string }) => `
+  File: ${item.file}
+  Fixed Code: ${item.fixedCode}
+  `
+  );
+
+  const review = `${chunks.join('\n\n')}`;
+
+  core.setOutput('review', review);
 };
 
 await test();

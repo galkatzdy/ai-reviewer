@@ -48,16 +48,13 @@ jobs:
           API_KEY: ${{ secrets.API_KEY }}
           DIFF: ${{ steps.get-diff.outputs.diff }}
 
-      - name: Process review results
-        id: process
-        run: |
-          content="🤖 AI Reviewer result 🤖\n\n"
-          echo "${{ toJSON(steps.ai-reviewer.outputs.review) }}" | jq -r 'to_entries[] | "### File: `\(.key)`\n```\n\(.value)\n```\n"' > comment.txt
-
       - name: Add comment
         uses: peter-evans/create-or-update-comment@v4
         if: ${{ steps.ai-reviewer.outputs.review != 'NO_ISSUES' }}
         with:
           issue-number: ${{ github.event.pull_request.number }}
           token: ${{ secrets.GITHUB_TOKEN }}
-          body-path: comment.txt
+          body: |
+            :robot: AI Reviewer result :robot:
+
+            ${{ steps.ai-reviewer.outputs.review }}
