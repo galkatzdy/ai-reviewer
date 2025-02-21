@@ -46,7 +46,7 @@ jobs:
         uses: yanamura/git-merge-diff@v1
         with:
           from: ${{ env.BRANCH_NAME }}
-          to: HEAD
+          to: master
 
       - name: Run AI Reviewer
         id: ai-reviewer
