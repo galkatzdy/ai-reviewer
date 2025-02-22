@@ -12,7 +12,7 @@ enum Sizes {
   Large = 'large',
 }
 
-enum VARIANTS {
+enum Variants {
   Default = 'default',
   Primary = 'primary',
   Secondary = 'secondary',

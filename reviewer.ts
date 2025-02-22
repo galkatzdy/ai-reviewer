@@ -21,10 +21,9 @@ const test = async () => {
 
   Array<{violations: string, file: string, line: number}>
 
-  Each json object MUST represent a fix of function block of code, not a single line or entire file. 
   The violations MUST include the full reason for the violation.
   The line MUST be the line number of the issue.
-  If there are no issues, reason should be empty.
+  If there are no issues, violation should be empty.
   THE RESPONSE MUST ONLY BE A JSON ARRAY. OTHERWISE YOU WILL BE BANNED.
   `;
 
