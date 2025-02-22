@@ -7,14 +7,14 @@ enum Colors {
 }
 
 enum Sizes {
-  Small = 'small',
+  Small = 'SMALL',
   Medium = 'MEDIUM',
   Large = 'large',
 }
 
 enum Variants {
   Default = 'default',
-  Primary = 'primary',
+  PRIMARY = 'primary',
   Secondary = 'secondary',
 }
 
