@@ -42,7 +42,7 @@ const test = async () => {
 
   const filteredJson = parsedJson.filter(
     (item: { file: string; violations: string; line: number }) =>
-      item.violations !== '' && item.violations !== null && item.violations !== undefined
+      item.violations !== '' && item.violations !== null && item.violations !== undefined && item?.violations?.length
   );
 
   const chunks = filteredJson.map(
