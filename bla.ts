@@ -9,7 +9,7 @@ enum Colors {
 enum Sizes {
   Small = 'SMALL',
   Medium = 'MEDIUM',
-  Large = 'large',
+  LARGE = 'large',
 }
 
 enum Variants {
