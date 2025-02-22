@@ -11,7 +11,7 @@ const test = async () => {
   The guidelines:
   - Environment variables should be in all caps.
   - A styled component that uses styled-components should not declare the colors manually instead use the theme.
-  - Enum's name MUST be PascalCase. Enum's keys MUST be PascalCase. Enum's values could be of any format.
+  - Enum names and keys MUST be in PascalCase, while enum values can be in any format.
   - When importing a react component, it MUST be without any extension.
   - React hooks MUST be with .ts extension instead of .tsx.
   - react-components styling file MUST be with .ts extension instead of .tsx.
