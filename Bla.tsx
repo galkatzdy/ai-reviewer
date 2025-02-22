@@ -8,9 +8,9 @@ export const Bla: FC<Props> = ({ children }) => {
   const isTest = 'true';
   const isTest2 = Boolean(isTest);
   return (
-    <div>
+    <>
       {isTest2}
       {children}
-    </div>
+    </>
   );
 };
