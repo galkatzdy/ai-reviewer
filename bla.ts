@@ -14,7 +14,7 @@ enum Sizes {
 
 enum Variants {
   Default = 'default',
-  PRIMARY = 'primary',
+  Primary = 'primary',
   Secondary = 'secondary',
 }
 
