@@ -28,7 +28,7 @@ const test = async () => {
   `;
 
   const Result = await openai.chat.completions.create({
-    model: 'google/gemini-exp-1206:free',
+    model: 'openai/o3-mini',
     messages: [{ role: 'user', content: prompt }],
   });
 
