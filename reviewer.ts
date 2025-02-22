@@ -19,9 +19,9 @@ const test = async () => {
   - Prefer Boolean(variable) over !!variable.
   - Prefer Number(variable) over +variable.
   - Prefer importing types with import type instead of import.
-  - Prefer named imports over default imports.
+  - Prefer named imports over default imports unless it's from a library.
   - Always use FC type for functional components when props are used.
-  - First or wrapper component MUST be called Root unless it's not imported from styles file, a fragment or an html element.
+  - First or wrapper component inside a .tsx file MUST be called Root unless it's imported from styles file, a fragment or an html element.
   - You MUST use transient variable names for styled components props.
   - Prefer using empty <></> over Fragment unless you need to pass key.
   - The name of the react component MUST be in PascalCase and match the file name.
