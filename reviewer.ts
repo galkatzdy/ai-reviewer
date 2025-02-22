@@ -16,6 +16,15 @@ const test = async () => {
   - React hooks MUST be with .ts extension instead of .tsx.
   - react-components styling file MUST be with .ts extension instead of .tsx.
   - booleans variables MUST start with 'is' or 'has' or 'should'.
+  - Prefer Boolean(variable) over !!variable.
+  - Prefer Number(variable) over +variable.
+  - Prefer importing types with import type instead of import.
+  - Prefer named imports over default imports.
+  - Always use FC type for functional components when props are used.
+  - First or wrapper component MUST be called Root unless it's not imported from styles file or a fragment.
+  - You MUST use transient variable names for styled components props.
+  - Prefer using empty <></> over Fragment unless you need to pass key.
+  - The name of the react component MUST be in PascalCase and match the file name.
   You have the following code: ${process.env.DIFF}. 
   Your response MUST ALWAYS ONLY output as structured json as follows:
 
