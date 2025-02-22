@@ -6,25 +6,28 @@ const test = async () => {
     apiKey: process.env.API_KEY,
     baseURL: 'https://openrouter.ai/api/v1',
   });
-  const prompt = `Your job is to only check styling guidelines. DON'T have an instruction in you response just the JSON.  You must ignore any code that is not related to styling guidelines mentioned below.
+
+  const prompt = `Your job is to only check styling guidelines. You must ignore any code that is not related to styling guidelines mentioned below.
   The guidelines:
-  - Every variable needs to be declared as camelCase.
   - Environment variables should be in all caps.
-  - One word variables should be in lowercase.
-  - Names of functions should be in camelCase.
+  - A styled component that uses styled-components should not declare the colors manually instead use the theme.
+  - Enum name MUST be PascalCase.
+  - Enum keys MUST be PascalCase.
+  - Importing path MUST not include file extension.
   You have the following code: ${process.env.DIFF}. 
   Your response MUST ALWAYS ONLY output as structured json as follows:
 
-  Array<{fixedCode?: string, file: string}>
-  
-  Each json object MUST represent a fix of function block of code, not a single line or entire file.
+  Array<{violations: string, file: string, line: number}>
 
-  If there are no issues, fixedCode should be empty.
+  Each json object MUST represent a fix of function block of code, not a single line or entire file. 
+  The violations MUST include the full reason for the violation.
+  The line MUST be the line number of the issue.
+  If there are no issues, reason should be empty.
   THE RESPONSE MUST ONLY BE A JSON ARRAY. OTHERWISE YOU WILL BE BANNED.
   `;
 
   const Result = await openai.chat.completions.create({
-    model: 'google/gemini-2.0-flash-001',
+    model: 'google/gemini-2.0-flash-thinking-exp:free',
     messages: [{ role: 'user', content: prompt }],
   });
 
@@ -34,13 +37,14 @@ const test = async () => {
   console.log({ jsonOutput: jsonOutput });
   const parsedJson = JSON.parse(jsonOutput || '[]');
 
-  const filteredJson = parsedJson.filter((item: { file: string; fixedCode: string }) => item.fixedCode !== '');
+  const filteredJson = parsedJson.filter(
+    (item: { file: string; violations: string; line: number }) =>
+      item.violations !== '' && item.violations !== null && item.violations !== undefined
+  );
 
   const chunks = filteredJson.map(
-    (item: { file: string; fixedCode: string }) => `
-  File: *${item.file}*
-  \`\`\`${item.fixedCode}\`\`\`
-  `
+    (item: { file: string; violations: string; line: number }) =>
+      `File: ${item.file}\nLine: ${item.line}\nViolations: ${item.violations}\n\n`
   );
 
   const review = `${chunks.join('\n\n')}`;
