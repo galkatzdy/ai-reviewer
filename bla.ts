@@ -2,20 +2,20 @@ import { helper } from 'helper';
 
 enum Colors {
   Red = 'RED',
-  Blue = 'blue',
-  Yellow = 'yellow',
+  Blue = 'BLUE',
+  Yellow = 'YELLOW',
 }
 
 enum Sizes {
   Small = 'SMALL',
   Medium = 'MEDIUM',
-  Large = 'large',
+  Large = 'LARGE',
 }
 
 enum Variants {
   Default = 'DEFAULT',
-  Primary = 'primary',
-  SECONDARY = 'secondary',
+  Primary = 'PRIMARY',
+  Secondary = 'SECONDARY',
 }
 
 const test = () => {
