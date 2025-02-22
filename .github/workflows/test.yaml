@@ -38,7 +38,7 @@ jobs:
         run: |
           git fetch origin
           echo "diff<<EOF" >> $GITHUB_OUTPUT
-          git diff origin/master..HEAD -- 'bla.ts' 'bla.styles.tsx' 'useHooks.tsx' | tr -d '\r' >> $GITHUB_OUTPUT
+          git diff origin/master..HEAD -- 'bla.ts' 'bla.styles.ts' 'useHooks.ts' | tr -d '\r' >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
 
       - name: Run AI Reviewer
