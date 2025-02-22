@@ -1,6 +1,6 @@
 export const useHooks = () => {
-  const darkMode = useColorScheme() === 'dark';
+  const isDarkMode = useColorScheme() === 'dark';
   return {
-    darkMode,
+    isDarkMode,
   };
 };
