@@ -28,7 +28,7 @@ const test = async () => {
   `;
 
   const Result = await openai.chat.completions.create({
-    model: 'google/gemini-2.0-flash-thinking-exp:free',
+    model: 'google/gemini-exp-1206:free',
     messages: [{ role: 'user', content: prompt }],
   });
 
