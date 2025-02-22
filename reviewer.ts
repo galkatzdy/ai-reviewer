@@ -27,13 +27,15 @@ const test = async () => {
   THE RESPONSE MUST ONLY BE A JSON ARRAY. OTHERWISE YOU WILL BE BANNED.
   `;
 
-  const Result = await openai.chat.completions.create({
-    model: 'openai/o3-mini',
+  console.log({ diff: process.env.DIFF });
+
+  const result = await openai.chat.completions.create({
+    model: 'google/gemini-2.0-flash-thinking-exp:free',
     messages: [{ role: 'user', content: prompt }],
   });
 
-  console.log({ result: Result.choices[0].message.content });
-  const jsonOutput = Result.choices[0].message.content?.replaceAll('```json', '').replaceAll('```', '');
+  console.log({ result: result.choices[0].message.content });
+  const jsonOutput = result.choices[0].message.content?.replaceAll('```json', '').replaceAll('```', '');
 
   console.log({ jsonOutput: jsonOutput });
   const parsedJson = JSON.parse(jsonOutput || '[]');
