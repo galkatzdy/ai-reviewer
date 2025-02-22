@@ -1,4 +1,4 @@
-import { helper } from 'helper.ts';
+import { helper } from 'helper';
 
 enum Colors {
   Red = 'red',
