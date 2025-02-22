@@ -1,12 +1,12 @@
-import { ReactNode } from 'react';
+import { type ReactNode, type FC } from 'react';
 
 type Props = {
   children: ReactNode;
 };
 
-export const Bla = ({ children }: Props) => {
+export const Bla: FC<Props> = ({ children }) => {
   const isTest = 'true';
-  const isTest2 = !!isTest;
+  const isTest2 = Boolean(isTest);
   return (
     <div>
       {isTest2}
