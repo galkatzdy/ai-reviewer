@@ -11,8 +11,8 @@ const test = async () => {
   The guidelines:
   - Environment variables should be in all caps.
   - A styled component that uses styled-components should not declare the colors manually instead use the theme.
-  - Enum name MUST start with an uppercase letter and each word after that should start with a uppercase letter. The enum values could be of any format.
-  - Enum keys MUST start with an uppercase letter and each word after that should start with a uppercase letter. The enum values could be of any format.
+  - Enum name MUST be PascalCase.
+  - Enum keys MUST be PascalCase.
   You have the following code: ${process.env.DIFF}. 
   Your response MUST ALWAYS ONLY output as structured json as follows:
 
