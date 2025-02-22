@@ -13,9 +13,9 @@ enum Sizes {
 }
 
 enum Variants {
-  Default = 'default',
+  Default = 'DEFAULT',
   Primary = 'primary',
-  Secondary = 'secondary',
+  SECONDARY = 'secondary',
 }
 
 const test = () => {
