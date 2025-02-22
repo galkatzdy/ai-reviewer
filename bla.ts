@@ -1,18 +1,18 @@
 import { helper } from 'helper';
 
 enum Colors {
-  Red = 'red',
+  Red = 'RED',
   Blue = 'blue',
   Yellow = 'yellow',
 }
 
 enum Sizes {
   Small = 'small',
-  Medium = 'medium',
+  Medium = 'MEDIUM',
   Large = 'large',
 }
 
-enum Variants {
+enum VARIANTS {
   Default = 'default',
   Primary = 'primary',
   Secondary = 'secondary',
