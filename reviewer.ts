@@ -14,6 +14,9 @@ const test = async () => {
   - Enum name MUST be PascalCase.
   - Enum keys MUST be PascalCase.
   - Importing path MUST not include file extension.
+  - React hooks MUST be with .ts extension instead of .tsx.
+  - react-components styling file MUST be with .ts extension instead of .tsx.
+  - booleans variables MUST start with 'is' or 'has' or 'should'.
   You have the following code: ${process.env.DIFF}. 
   Your response MUST ALWAYS ONLY output as structured json as follows:
 
