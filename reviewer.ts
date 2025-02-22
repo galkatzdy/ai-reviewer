@@ -21,7 +21,7 @@ const test = async () => {
   - Prefer importing types with import type instead of import.
   - Prefer named imports over default imports.
   - Always use FC type for functional components when props are used.
-  - First or wrapper component MUST be called Root unless it's not imported from styles file or a fragment.
+  - First or wrapper component MUST be called Root unless it's not imported from styles file, a fragment or an html element.
   - You MUST use transient variable names for styled components props.
   - Prefer using empty <></> over Fragment unless you need to pass key.
   - The name of the react component MUST be in PascalCase and match the file name.
