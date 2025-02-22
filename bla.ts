@@ -1,3 +1,5 @@
+import { helper } from 'helper.ts';
+
 enum Colors {
   Red = 'red',
   Blue = 'blue',
