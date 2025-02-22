@@ -13,7 +13,7 @@ const test = async () => {
   - A styled component that uses styled-components should not declare the colors manually instead use the theme.
   - Enum name MUST be PascalCase.
   - Enum keys MUST be PascalCase.
-  - Importing path MUST not include file extension.
+  - When importing a react component, it MUST be without any extension.
   - React hooks MUST be with .ts extension instead of .tsx.
   - react-components styling file MUST be with .ts extension instead of .tsx.
   - booleans variables MUST start with 'is' or 'has' or 'should'.
