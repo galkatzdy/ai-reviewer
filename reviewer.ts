@@ -25,7 +25,7 @@ const test = async () => {
   - You MUST use transient variable names for styled components props.
   - Prefer using empty <></> over Fragment unless you need to pass key.
   - The name of the react component MUST be in PascalCase and match the file name.
-  You have the following code: ${process.env.DIFF}. 
+  These are the changes in a diff format: ${process.env.DIFF}. 
   Your response MUST ALWAYS ONLY output as structured json as follows:
 
   Array<{violations: string, file: string, line: number}>
@@ -39,7 +39,7 @@ const test = async () => {
   console.log({ diff: process.env.DIFF });
 
   const result = await openai.chat.completions.create({
-    model: 'openai/o3-mini',
+    model: 'google/gemini-2.0-flash-thinking-exp:free',
     messages: [{ role: 'user', content: prompt }],
   });
 
