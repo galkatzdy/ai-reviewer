@@ -39,7 +39,7 @@ const test = async () => {
   console.log({ diff: process.env.DIFF });
 
   const result = await openai.chat.completions.create({
-    model: 'google/gemini-2.0-flash-thinking-exp:free',
+    model: 'openai/o3-mini',
     messages: [{ role: 'user', content: prompt }],
   });
 
